@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>ATM Simulator</title>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap-theme.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+
+    <style>
+
+        .container {
+            width: 500px;
+            clear: both;
+        }
+        .container input {
+            width: 100%;
+
+        }
+        body {
+            text-align:center;
+            background-color:#FFFFFF;
+            font-family:Verdana, Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">ATM Simulator</a>
+</nav>
+
+
+<main role="main" class="container">
+
+    <div class="starter-template">
+        <h1>ATM Simulator</h1>
+        <h2>
+            <span th:text="'Welcome! '"></span> <br/>
+            <span th:if="${error != null}" th:text="${error}"></span>
+        </h2>
+    </div>
+
+    <div class="container">
+        <form  action="#" th:action="@{/login}"  th:object="${account}" method="post">
+            <label>Enter your account number: </label>
+            <div class="input-group">
+            <input th:field="*{accountNo}" type="number" class="form-control"   maxlength="16"/>
+            </div>
+
+            <div class="form-group">
+            <label >Enter your PIN: </label>
+            <input th:field="*{pin}" type="password" class="form-control"  maxlength="4"/>
+            </div>
+
+            <div class="btn-group" >
+                <input class="btn btn-success" type="submit" value="Login"/>&nbsp;&nbsp;&nbsp;
+                <input class="btn btn-danger" type="reset" value="Reset" />
+            </div>
+        </form>
+    </div>
+</main>
+
+</body>
+</html>
